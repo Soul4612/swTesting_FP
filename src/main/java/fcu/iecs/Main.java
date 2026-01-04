@@ -1,17 +1,40 @@
 package fcu.iecs;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-public class Main {
-    static void main() {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        IO.println(String.format("Hello and welcome!"));
+import fcu.iecs.elementalfight.ElementalFight;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            IO.println("i = " + i);
+import java.util.Scanner;
+
+public class Main {
+    private static final Logger logger = LogManager.getLogger(Main.class);
+    private static Scanner scanner = new Scanner(System.in);
+    private static String instruction;
+    private static String msg;
+    private static String[] gameList = {"五行競技場"};
+
+    public static void main(String[] args) {
+        msg = "程式開始執行。";
+        System.out.println(msg);
+        logger.info(msg);
+
+        while (true) {
+            msg = "";
+            System.out.println("請選擇遊戲。(輸入\"exit\"退出執行。)");
+            for (int i = 0; i < gameList.length; i++) {
+                System.out.println(i + 1 + ". " + gameList[i]);
+            }
+            instruction = scanner.nextLine();
+            if (instruction.equals("exit")) {
+                msg = "程式結束執行。";
+                System.out.println(msg);
+                logger.info(msg);
+                break;
+            } else if (instruction.equals("1")) {
+                ElementalFight.start();
+            } else {
+                System.out.println("無效的指令。");
+            }
         }
     }
 }

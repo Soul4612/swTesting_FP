@@ -1,0 +1,4 @@
+2026-01-04 18:00:42.450 [main] INFO  fcu.iecs.Main - 程式開始執行。
+2026-01-04 18:02:00.831 [main] INFO  fcu.iecs.elementalfight.ElementalFight - 【五行競技場】開始遊戲！
+2026-01-04 18:02:02.660 [main] INFO  fcu.iecs.elementalfight.ElementalFight - 【五行競技場】結束遊戲。
+2026-01-04 18:02:03.856 [main] INFO  fcu.iecs.Main - 程式結束執行。
