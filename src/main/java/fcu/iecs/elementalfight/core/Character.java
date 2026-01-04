@@ -49,7 +49,7 @@ public abstract class Character {
     // 水剋火，火剋金，金剋木，木剋土，土剋水
     // 生 *0.8 ，剋 *1.2
     public void attack(Character op, GameState opState) {
-        System.out.println(name + " 攻擊了 " + op.name + ", 造成了 " + atk * getMultiplier(this, op) + " 點傷害。");
+        System.out.println(name + " 攻擊了 " + op.name + "，造成了 " + atk * getMultiplier(this, op) + " 點傷害。");
         opState.setHp(opState.getHp() - (atk * getMultiplier(this, op)));
         if (opState.getHp() < 0.0) {
             opState.setHp(0.0);
@@ -71,7 +71,7 @@ public abstract class Character {
         } else if (character.element == Element.METAL) {
             if (op.element == Element.WATER) multiplier = 0.8;
             if (op.element == Element.WOOD) multiplier = 1.2;
-        } else if (character.element == Element.EARTH) {
+        } else {
             if (op.element == Element.METAL) multiplier = 0.8;
             if (op.element == Element.WATER) multiplier = 1.2;
         }

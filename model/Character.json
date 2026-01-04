@@ -16,5 +16,32 @@
     "hasSkill" : true,
     "builtTime" : "2026-01-03T03:53:50.3852075",
     "hp" : 50.0
+  },
+  "Ash" : {
+    "name" : "Ash",
+    "element" : "EARTH",
+    "atk" : 10.0,
+    "speed" : 5,
+    "hasSkill" : false,
+    "builtTime" : "2026-01-05T06:25:05.0074698",
+    "hp" : 60.0
+  },
+  "Lucifer" : {
+    "name" : "Lucifer",
+    "element" : "FIRE",
+    "atk" : 15.0,
+    "speed" : 5,
+    "hasSkill" : false,
+    "builtTime" : "2026-01-05T06:26:29.4476423",
+    "hp" : 50.0
+  },
+  "King " : {
+    "name" : "King",
+    "element" : "METAL",
+    "atk" : 10.0,
+    "speed" : 10,
+    "hasSkill" : true,
+    "builtTime" : "2026-01-05T06:30:27.6076967",
+    "hp" : 50.0
   }
 }

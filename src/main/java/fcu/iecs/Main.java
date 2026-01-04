@@ -33,7 +33,7 @@ public class Main {
             } else if (instruction.equals("1")) {
                 ElementalFight.start();
             } else {
-                System.out.println("無效的指令。");
+                System.out.println("無效的指令 " + instruction);
             }
         }
     }
