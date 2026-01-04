@@ -72,6 +72,10 @@ public class ElementalFight {
                 // 輸入名稱
                 System.out.print("輸入角色名稱: ");
                 String name = scanner.nextLine();
+                if (characterMap.containsKey(name)) {
+                    System.out.println("角色已存在！");
+                    continue;
+                }
                 System.out.print("選擇角色屬性(1.水, 2.火, 3.木, 4.金, 5.土): ");
                 String choice = scanner.nextLine();
                 switch (choice) {
@@ -93,17 +97,21 @@ public class ElementalFight {
                     continue;
                 }
                 if (!characterMap.containsKey(instructions[1])) {
-                    System.out.println("角色 " + instructions[1] + "不存在。");
+                    System.out.println("角色 " + instructions[1] + " 不存在。");
                     continue;
                 }
                 if (!characterMap.containsKey(instructions[2])) {
-                    System.out.println("角色 " + instructions[2] + "不存在。");
+                    System.out.println("角色 " + instructions[2] + " 不存在。");
+                    continue;
+                }
+                if (instructions[1].equals(instructions[2])) {
+                    System.out.println("不得和自己對戰！");
                     continue;
                 }
                 fight(characterMap.get(instructions[1]), characterMap.get(instructions[2]));
             } else if (instruction.equals("showplayerlist")) {
-                for (Character c : characterMap.values()) {
-                    System.out.println(c.getName() + " - " + c.getElement());
+                for (String name : characterMap.keySet()) {
+                    System.out.println(name + " - " + characterMap.get(name).getElement());
                 }
             } else {
                 System.out.println("無效的指令 " + instruction);
@@ -138,15 +146,16 @@ public class ElementalFight {
         GameState defState = new GameState(defender.getHP(), defender.isHasSkill());
 
         System.out.println(attacker.getName() + " 先攻");
+        int round = 1;
         label:
         while (true) {
             // 結束判定
-            if (atkState.getHp() <= 0.0 || defState.getHp() <= 0.0) {
+            if (atkState.getHp() <= 0.0 || defState.getHp() <= 0.0 || round > 25) {
                 break;
             }
 
             // 指令輸入
-            System.out.print(attacker.getName() + ": ");
+            System.out.print("【Round " + round + "】" + attacker.getName() + ": ");
             instruction = scanner.nextLine();
             switch (instruction) {
                 case "attack":
@@ -173,13 +182,18 @@ public class ElementalFight {
             GameState tempState = atkState;
             atkState = defState;
             defState = tempState;
+            // 回合+1
+            round++;
         }
 
         // 結果輸出
-        if (atkState.getHp() <= 0.0) {
+        if (atkState.getHp() <= 0.0 && defState.getHp() > 0.0) {
             System.out.println(defender.getName() + " 獲勝！");
-        } else {
+
+        } else if (defState.getHp() <= 0.0 && atkState.getHp() > 0.0) {
             System.out.println(attacker.getName() + " 獲勝！");
+        } else {
+            System.out.println("平手！");
         }
     }
 }

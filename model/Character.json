@@ -35,7 +35,7 @@
     "builtTime" : "2026-01-05T06:26:29.4476423",
     "hp" : 50.0
   },
-  "King " : {
+  "King" : {
     "name" : "King",
     "element" : "METAL",
     "atk" : 10.0,
