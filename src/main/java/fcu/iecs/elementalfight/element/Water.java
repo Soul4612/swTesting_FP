@@ -3,12 +3,8 @@ package fcu.iecs.elementalfight.element;
 import fcu.iecs.elementalfight.core.Character;
 import fcu.iecs.elementalfight.core.Element;
 import fcu.iecs.elementalfight.core.GameState;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 public class Water extends Character {
-    private static final Logger logger = LogManager.getLogger(Water.class);
-
     // Jackson 反序列化需要空建構子
     public Water() {
     }
@@ -25,9 +21,12 @@ public class Water extends Character {
         } else {
             // 已使用技能
             charState.setHasSkill(false);
+            System.out.println(name + " 使用了技能【斬殺】");
             // 若對方血量低於等於 30% 則斬殺
             if (opState.getHp() / op.getHP() <= 0.3) {
+                System.out.println("斬殺成功！");
                 opState.setHp(0.0);
+                System.out.println(op.getName() + " 剩餘血量 " + opState.getHp());
             } else {
                 System.out.println("對手血量未到斬殺線！Miss!");
             }

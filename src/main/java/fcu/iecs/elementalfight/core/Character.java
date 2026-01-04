@@ -3,8 +3,6 @@ package fcu.iecs.elementalfight.core;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import fcu.iecs.elementalfight.element.*;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import java.time.LocalDateTime;
 
@@ -23,8 +21,6 @@ import java.time.LocalDateTime;
         @JsonSubTypes.Type(value = Earth.class, name = "EARTH")
 })
 public abstract class Character {
-    private static final Logger logger = LogManager.getLogger(Character.class);
-
     protected String name;
     protected Element element;
     protected double HP;
@@ -52,11 +48,13 @@ public abstract class Character {
     // 水生木，木生火，火生土，土生金，金生水
     // 水剋火，火剋金，金剋木，木剋土，土剋水
     // 生 *0.8 ，剋 *1.2
-    public void attack(GameState charState, Character op, GameState opState) {
+    public void attack(Character op, GameState opState) {
+        System.out.println(name + " 攻擊了 " + op.name + ", 造成了 " + atk * getMultiplier(this, op) + " 點傷害。");
         opState.setHp(opState.getHp() - (atk * getMultiplier(this, op)));
         if (opState.getHp() < 0.0) {
             opState.setHp(0.0);
         }
+        System.out.println(op.name + " 剩餘血量 " + opState.getHp());
     }
 
     public static double getMultiplier(Character character, Character op) {

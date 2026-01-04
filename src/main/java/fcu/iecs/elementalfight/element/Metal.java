@@ -3,12 +3,8 @@ package fcu.iecs.elementalfight.element;
 import fcu.iecs.elementalfight.core.Character;
 import fcu.iecs.elementalfight.core.Element;
 import fcu.iecs.elementalfight.core.GameState;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 public class Metal extends Character {
-    private static final Logger logger = LogManager.getLogger(Metal.class);
-
     // Jackson 反序列化需要空建構子
     public Metal() {
     }
@@ -25,9 +21,10 @@ public class Metal extends Character {
         } else {
             // 已使用技能
             charState.setHasSkill(false);
+            System.out.println(name + " 使用了技能【連擊】");
             // 攻擊兩次
-            attack(charState, op, opState);
-            attack(charState, op, opState);
+            attack(op, opState);
+            attack(op, opState);
         }
     }
 }
