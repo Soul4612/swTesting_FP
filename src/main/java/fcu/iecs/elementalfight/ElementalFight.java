@@ -29,7 +29,7 @@ public class ElementalFight {
     }
 
     // Utility class
-    private ElementalFight() {
+    ElementalFight() {
     }
 
     private static void load() {
@@ -67,7 +67,11 @@ public class ElementalFight {
             if (instruction.equals("exit")) {
                 break;
             } else if (instruction.equals("help")) {
-                // TODO
+                System.out.println("指令說明: ");
+                System.out.println("【create】>> 創建角色");
+                System.out.println("【fight + <name> + <name>】>> 開始戰鬥");
+                System.out.println("【showplayerlist】>> 瀏覽角色");
+                System.out.println("【exit】>> 離開遊戲");
             } else if (instruction.equals("create")) {
                 // 輸入名稱
                 System.out.print("輸入角色名稱: ");
